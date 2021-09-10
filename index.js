@@ -2,10 +2,12 @@ var express = require('express');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
+var port = process.env.PORT || 3000;
+
 passport.use(new Strategy({
     clientID: "246094660854115",
     clientSecret: "130db2862aad2754d5f49f921b4d6e4a",
-    callbackURL: 'http://localhost:3000/login/facebook/return'
+    callbackURL: 'https://aqueefauth.herokuapp.com/login/facebook/callback'
 },
     function(accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
@@ -71,4 +73,4 @@ app.get('/profile', require('connect-ensure-login').ensureLoggedIn(), (req,res)=
     res.render('profile',{ user: req.user });
 });
 
-app.listen('3000',()=>console.log("server is running at port 3000..."));
+app.listen(port,()=>console.log("server is running at port 3000..."));
