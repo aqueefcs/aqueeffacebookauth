@@ -4,7 +4,7 @@
   "description": "facebook login with passport js",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "keywords": [
     "facebook"
